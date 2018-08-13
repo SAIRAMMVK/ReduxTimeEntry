@@ -1,11 +1,12 @@
 import React,{Component} from 'react';
 import EntryContent from './entry';
 import DisplayContent from './display';
+import { WSAEINTR, DH_UNABLE_TO_CHECK_GENERATOR } from 'constants';
 
 class MainFile extends Component{
     constructor() {
-        let fieldvalue, swipeindate,swipeInTimeHours, swipeInTimeMinutes, startTime, stayTime;
-        let emparray = [], empentry = [];
+        let fieldvalue, swipeindate,swipeInTimeHours,swipeoutdate, swipeInTimeMinutes, startTime, stayTime;
+        let emparray = [], empentry = [], empexit=[];
         super();
         this.state = {
           entry: {
@@ -14,7 +15,7 @@ class MainFile extends Component{
           },
           exit:{
             employees: [],
-            eexittimes: []
+            exittimes: []
           },
           stay:{
               employees:[],
@@ -36,6 +37,20 @@ class MainFile extends Component{
         this.stayTime = ((endTime - this.startTime)/100);
         //difference time 
         console.log("You stayed for " + this.stayTime + " hours")
+
+        //storing the time of leaving
+        this.empexit = this.state.exit.exittimes;
+        let outTime = new Date().toLocaleString();
+
+        this.empexit.push(outTime);
+
+        this.setState({
+            exit:{
+                exittimes:this.empexit
+            }
+        }) 
+        console.log(this.state.exit.exittimes) 
+                
       }
     
       updateEntry() {
@@ -48,6 +63,7 @@ class MainFile extends Component{
         this.swipeintime = this.swipeindate.getHours();
         this.swipeInTimeMinutes = this.swipeindate.getMinutes();
         this.startTime = parseInt(this.swipeintime.toString() + this.swipeInTimeMinutes.toString());
+        
         this.empentry = this.state.entry.entrytimes;
         this.empentry.push(this.swipeindate.toLocaleString());
     

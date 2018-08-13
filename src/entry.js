@@ -12,7 +12,7 @@ class EntryContent extends Component {
                             placeholder="Enter employee id" name="eid" />
                     </div>
                     <div className="form-group">
-                        <button type="button" id="swipein" onClick={this.props.setEntry}  className="btn btn-primary">Swipe In</button>
+                        <button type="button" id="swipein" onClick={this.props.setEntry}  className="btn btn-primary" >Swipe In</button>
                         <button type="button" id="swipeout" onClick={this.props.changeEntry} className="btn btn-primary" >Swipe Out</button>                        
                         
                     </div>

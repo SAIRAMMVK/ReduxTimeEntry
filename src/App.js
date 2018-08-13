@@ -7,7 +7,7 @@ import DisplayContent from './display';
 class App extends Component {
 
   constructor() {
-    let fieldvalue, swipeindate,swipeoutdate,swipeintime;
+    let fieldvalue, swipeindate,swipeoutdate,swipeInTimeHours,swipeInTimeMinutes,startTime,stayTime;
     let emparray = [], empentry = [];
     super();
     this.state = {
@@ -21,10 +21,15 @@ class App extends Component {
 
   changeTime(){
     console.log("hello lover boy")
-    let outTime = new Date().getHours();
-    let diffTime = ((outTime-this.swipeintime));
-    console.log("You stayed for "+ diffTime)
+    //calculating the hours of stay in office
+
+    let outTimeHours = new Date().getHours();
+    let outTimeMinutes = new Date().getMinutes();
+    let endTime = parseInt(outTimeHours.toString()+outTimeMinutes.toString())
     
+    this.stayTime = (endTime - this.startTime);
+    //difference time 
+    console.log("You stayed for "+ ((this.stayTime)/100)+" hours")
   }
 
   updateEntry() {
@@ -37,7 +42,8 @@ class App extends Component {
     //creating the time entry on click of the button
     this.swipeindate = new Date();
     this.swipeintime = this.swipeindate.getHours();
-    console.log(this.swipeintime)
+    this.swipeInTimeMinutes = this.swipeindate.getMinutes();
+    this.startTime = parseInt(this.swipeintime.toString()+ this.swipeInTimeMinutes.toString());
     this.empentry = this.state.entrytimes;
     this.empentry.push(this.swipeindate.toLocaleString());
 
@@ -45,6 +51,7 @@ class App extends Component {
       employees: this.emparray,
       entrytimes: this.empentry
     })
+
     //code for enabling the swipeout button
     // setTimeout(function () {
     //  document.getElementById("swipeout").removeAttribute("disabled")

@@ -1,0 +1,68 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color:lightcyan;
+  height: 70px;
+  padding: 65px;
+  color: crimson;
+  font-size: 20px;
+}
+
+h4{
+  font-size: 18px;
+}
+
+.btn{
+  margin-right: 20px;
+}
+
+.btn:hover{
+  color:lime;
+}
+
+.footer {
+  height: 50px;
+  background: #eee;
+  color:green;
+  padding:50px;
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+}
+
+
+h3{
+  margin-top:20px;
+}
+
+.content{
+  background-color: lightgoldenrodyellow;
+  height: 400px;
+  padding: 20px;
+   
+}
+
+.entrycontent{
+  float: left;
+  padding: 40px;
+  width: 40%;
+}
+
+.displaycontent{
+  float: right;
+  padding: 40px;  
+  width: 40%;
+}
+
+.names{
+  float: left;
+}
+
+
+.times{
+  float:right;
+}

@@ -28,6 +28,10 @@ class MainFile extends Component{
       }
     
       changeTime() {
+
+        this.emparray = this.state.exit.employees;
+        this.emparray.push(this.fieldvalue);
+
         //calculating the hours of stay in office
     
         let outTimeHours = new Date().getHours();
@@ -46,10 +50,11 @@ class MainFile extends Component{
 
         this.setState({
             exit:{
-                exittimes:this.empexit
+                exittimes:this.empexit,
+                employees:this.emparray
             }
         }) 
-        console.log(this.state.exit.exittimes) 
+        console.log(this.state.exit) 
                 
       }
     
